@@ -1,0 +1,52 @@
+
+.navbar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 10%;
+  box-shadow: 2px 2px 100px rgba(0, 0, 0, 0.90);
+  border-bottom-left-radius:20px;
+  border-bottom-right-radius: 20px;
+  background-color: transparent;
+}
+
+.logo{
+  width: 200px;
+}
+
+ul{
+  list-style: none;
+}
+
+ul li{
+  display: inline-block;
+  padding: 0 35px;
+  margin-top: 20px;
+}
+
+ul li a, .sign-up{
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 17px;
+  transition: all 0.3s ease-in-out;
+
+}
+
+a:hover{
+  color: rgb(148, 148, 255);
+}
+
+.sign-up{
+  background-color: transparent;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 2px solid white;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.sign-up:hover{
+  background-color: white;
+  color: black;
+}

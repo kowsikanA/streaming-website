@@ -1,0 +1,16 @@
+.poster{
+    width: 87%;
+    height: 90%;
+    border-radius: 10px;
+    transition: 0.1s;
+    cursor: pointer;
+    
+    border: 2px solid transparent;
+    transition: all 0.1s ease-in-out;
+  
+}
+
+.poster:hover{
+  border-color: rgb(192, 189, 189);
+  border-width: 5px;
+}

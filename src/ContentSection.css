@@ -1,0 +1,17 @@
+.details{
+  color: white;
+}
+
+.offer-container{
+  border: 2px solid white;
+  width: 76%;
+  
+
+  
+}
+
+.content-section{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

@@ -1,0 +1,10 @@
+<svg width="300" height="100" viewBox="0 0 300 100" xmlns="http://www.w3.org/2000/svg">
+  <rect width="300" height="100" fill="none"></rect>
+  <g>
+    <polygon points="10,20 10,80 60,50" fill="#007BFF"></polygon> <!-- Blue triangle -->
+    <path d="M25,40 C30,45 30,55 25,60" stroke="#FFFFFF" stroke-width="4" fill="none"></path>
+    <path d="M32,35 C40,45 40,55 32,65" stroke="#FFFFFF" stroke-width="4" fill="none"></path>
+    <path d="M40,30 C50,45 50,55 40,70" stroke="#FFFFFF" stroke-width="4" fill="none"></path>
+  </g>
+  <text x="75" y="60" font-family="Arial, sans-serif" font-size="32" fill="#FFFFFF">STREAMORA</text> <!-- White text -->
+</svg>
