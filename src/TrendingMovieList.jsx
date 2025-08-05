@@ -47,9 +47,10 @@ function TrendingMovieList() {
             <h3 style={{color: "white", fontSize: "20px"}}>Featured Movies</h3>
             <div style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(6, 1fr)",
+                gridTemplateColumns: "repeat(6, auto)",
                 marginTop: "1rem",
-                padding: "1rem"
+                paddingLeft: "10rem",
+                paddingRight: "10rem"
             }}>
                 {movies.map(movie => (
                     <Card

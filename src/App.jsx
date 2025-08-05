@@ -3,13 +3,14 @@ import Navbar from './Navbar';
 import HeroSection from './HeroSection';
 import FeaturedTVShowsList from './FeaturedTVShowsList';
 import ContentSection from './ContentSection';
+import Footer from './Footer';
 function App() {
   return (
     <div style={
       {
         display: "flex",
         flexDirection: "column",
-        alignContent: "center"
+        alignContent: "center",
       }
     }>
       <Navbar/> 
@@ -17,6 +18,7 @@ function App() {
       <TrendingMovieList/>
       <FeaturedTVShowsList/>
       <ContentSection />
+      <Footer/>
 
     </div>
   );

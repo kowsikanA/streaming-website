@@ -1,17 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+
+
 .details{
-  color: white;
+  /* text-align: center; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+  justify-content: center;
+  
+}
+
+.details> p{
+  font-family: "Lilita One", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size:30px;
+  margin-bottom: -0.3px;
+}
+
+.cost{
+  font-family:'Courier New', Courier, monospace;
+  font-weight: bolder;
+  font-size: 40px;
 }
 
 .offer-container{
+  padding: 1.5rem;
   border: 2px solid white;
-  width: 76%;
-  
+  border-radius: 20px;
+  width: 75%;
+  background: linear-gradient(to right, rgb(35, 133, 133), rgb(244, 142, 159));
 
-  
+  display: flex;
+  justify-content:space-around;
 }
 
 .content-section{
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: white;
+
+}
+
+.movies{
+
+   display: flex;
+   flex-wrap: wrap;
+   gap: 10px;
+   
+}
+
+.content-poster{
+  width: 100px;
 }
