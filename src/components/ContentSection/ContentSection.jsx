@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import Card from './Card';
-import Loading from './components/Loading';
-import ErrorMessage from './components/ErrorMessage';
+import Card from '../Card/Card';
+import Loading from '../Loading';
+import ErrorMessage from '../ErrorMessage';
+import './ContentSection.css'
 
-function FeaturedTVShowsList() {
+function ContentSection() {
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -11,7 +12,7 @@ function FeaturedTVShowsList() {
     useEffect(() => {
         const fetchMovies = async () => {
             //used in the themoviedb documentation: https://developer.themoviedb.org/reference/intro/getting-started
-            const url = 'https://api.themoviedb.org/3/tv/on_the_air?language=en-US&page=1';
+            const url = 'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1';
             const options = {
                 method: 'GET',
                 headers: {
@@ -41,26 +42,25 @@ function FeaturedTVShowsList() {
 
     if (loading) return <Loading message="Fetching user data..." />;
     if (error) return <ErrorMessage message={error} />;
+  return (
+    <section className='content-section' style={{paddingTop: "105px"}}>
+    <div className='offer-container'>
+      <div className='details'>
+        <h3 className='cost'>$5.99</h3>
+        <p>Cinema</p>
+        <p>Spotlight</p>
+      </div>
 
-    return (
-        <div style={{ padding: "1rem" }}>
-            <h3 style={{color: "white", fontSize: "20px"}}>Featured TV Shows</h3>
-            <div style={{
-               display: "grid",
-                gridTemplateColumns: "repeat(6, auto)",
-                marginTop: "1rem",
-                paddingLeft: "10rem",
-                paddingRight: "10rem"
-            }}>
-                {movies.map(movie => (
-                    <Card
-                        key={movie.id}
-                        image={movie.poster_path}
-                    />
+      <div className='movies'>
+           {movies.map(movie => (
+           
+                <img src={'https://image.tmdb.org/t/p/w500' + movie.poster_path} className='content-poster'  />
+                
                 ))}
-            </div>
-        </div>
-    );
+      </div>
+    </div>
+    </section>
+  )
 }
 
-export default FeaturedTVShowsList;
+export default ContentSection
