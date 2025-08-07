@@ -9,12 +9,15 @@
   border: 2px solid;
 
 }
+*{
+    transition: all 0.2s ease-in-out
+
+}
 
 .create-new{
   border: 3px solid  rgb(140, 140, 255);
   background-color: transparent;
   color: rgb(140, 140, 255);
-  transition: all 0.2s ease-in-out
 }
 
 .create-new:hover{
@@ -44,9 +47,7 @@ input{
   width: 49%;
 }
 
-button, .create-new{
-  text-align: center;
-  text-decoration: none;
+button{
   padding: 10px;
   border-radius: 7px;
   color: white;
@@ -60,7 +61,7 @@ button:hover{
 }
 
 button:active{
-  background-color:  rgb(97, 97, 237); 
+  background-color:  rgb(191, 191, 220); 
 }
 
 
@@ -79,3 +80,13 @@ button:active{
 
 }
 
+.go-to-signIn{
+  text-decoration: none;
+  margin: 0 auto; 
+  color: rgb(155, 155, 255);
+  
+}
+
+.go-to-signIn:hover{
+  text-decoration: underline;
+}

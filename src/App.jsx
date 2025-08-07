@@ -10,6 +10,7 @@ import Home from './pages/Home';
 import Contact from './pages/Contact';
 import About from './pages/About'
 import SignIn from './pages/SignIn/SignIn';
+import SignUp from './pages/SignUp/SignUp';
 function App() {
   return (
     // <div style={
@@ -34,6 +35,7 @@ function App() {
         <Route path="about" element={<About/>}/>
         <Route path="contact" element={<Contact/>}/>
         <Route path='signin' element={<SignIn />} />
+        <Route path='signup' element={<SignUp />} />
       </Route>
     </Routes>
   );

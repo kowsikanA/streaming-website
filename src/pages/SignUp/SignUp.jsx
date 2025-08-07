@@ -1,6 +1,7 @@
 import React from 'react'
-import './SignIn.css'
+import './SignUp.css'
 import { NavLink } from 'react-router-dom'
+
 function SignIn() {
   return (
     <div style={{
@@ -16,17 +17,15 @@ function SignIn() {
           textAlign: "center",
           fontSize: "30px",
           paddingBottom: "20px"
-        }}>Sign In</h4>
-        {/* <div className='full-name'>
+        }}>Create New Account</h4>
+        <div className='full-name'>
           <input type="text" name='First Name' placeholder="First Name" required />
           <input type="text" name='Last Name' placeholder="Last Name" required />
-        </div> */}
+        </div>
 
         <input type="email" name='email' placeholder='Email' required />
         <input type="text" name='password' placeholder='Password' required />
-        <button>Sign In</button>
-        <NavLink to='/signup' className='create-new'>Create New Account</NavLink>
-
+        <button>Sign Up</button>
 
 
         <h6 style={{ textAlign: "center", paddingBottom: "20px", borderBottom: "solid 1px" }}>or</h6>
@@ -44,8 +43,8 @@ function SignIn() {
           </svg>Google</button>
 
           <button className='social-icon'><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="25" height="30" viewBox="0 0 50 50">
-<linearGradient id="Ld6sqrtcxMyckEl6xeDdMa_uLWV5A9vXIPu_gr1" x1="9.993" x2="40.615" y1="9.993" y2="40.615" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#2aa4f4"></stop><stop offset="1" stop-color="#007ad9"></stop></linearGradient><path fill="url(#Ld6sqrtcxMyckEl6xeDdMa_uLWV5A9vXIPu_gr1)" d="M24,4C12.954,4,4,12.954,4,24s8.954,20,20,20s20-8.954,20-20S35.046,4,24,4z"></path><path fill="#fff" d="M26.707,29.301h5.176l0.813-5.258h-5.989v-2.874c0-2.184,0.714-4.121,2.757-4.121h3.283V12.46 c-0.577-0.078-1.797-0.248-4.102-0.248c-4.814,0-7.636,2.542-7.636,8.334v3.498H16.06v5.258h4.948v14.452 C21.988,43.9,22.981,44,24,44c0.921,0,1.82-0.084,2.707-0.204V29.301z"></path>
-</svg> Facebook</button>
+            <linearGradient id="Ld6sqrtcxMyckEl6xeDdMa_uLWV5A9vXIPu_gr1" x1="9.993" x2="40.615" y1="9.993" y2="40.615" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#2aa4f4"></stop><stop offset="1" stop-color="#007ad9"></stop></linearGradient><path fill="url(#Ld6sqrtcxMyckEl6xeDdMa_uLWV5A9vXIPu_gr1)" d="M24,4C12.954,4,4,12.954,4,24s8.954,20,20,20s20-8.954,20-20S35.046,4,24,4z"></path><path fill="#fff" d="M26.707,29.301h5.176l0.813-5.258h-5.989v-2.874c0-2.184,0.714-4.121,2.757-4.121h3.283V12.46 c-0.577-0.078-1.797-0.248-4.102-0.248c-4.814,0-7.636,2.542-7.636,8.334v3.498H16.06v5.258h4.948v14.452 C21.988,43.9,22.981,44,24,44c0.921,0,1.82-0.084,2.707-0.204V29.301z"></path>
+          </svg> Facebook</button>
 
           <button className='social-icon'><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="30" viewBox="0 0 50 48">
             <polygon fill="#5e35b1" points="4.209,14.881 11.632,14.881 16.189,26.715 20.966,14.881 28.315,14.881 17.07,42 9.501,42 12.587,34.96"></polygon>
@@ -53,6 +52,8 @@ function SignIn() {
             <polygon fill="#5e35b1" points="34.693,6 27.213,24.042 35.444,24.042 42.925,6"></polygon>
           </svg> Yahoo</button>
         </div>
+
+        <NavLink className='go-to-signIn' to="/signin">Already Have an account? </NavLink>
       </div>
     </div>
   )

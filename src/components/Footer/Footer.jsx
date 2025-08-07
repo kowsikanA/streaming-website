@@ -6,10 +6,10 @@ function Footer() {
 
       <div className='row row-cols-1 row-cols-sm-2 row-cols-md-6 pt-5 mt-5 border-top'>
         <div className="col mb-3">
-          <ul className='flex-column'>
-            <li><img src="/images/google_play_badge.svg" alt="" /></li>
-            <li><img src="/images/App_Store_Badge.svg" alt="" width={180} /></li>
-            <li><img src="/images/microsoft_badge.svg" alt="" width={180} className='rounded-3 border border-light' /></li>
+          <ul className='flex-column py-2'>
+            <li className='py-2'><img src="/images/google_play_badge.svg" alt="" /></li>
+            <li className='py-2'><img src="/images/App_Store_Badge.svg" alt="" width={180} /></li>
+            <li className='py-2'><img src="/images/microsoft_badge.svg" alt="" width={180} height={65} className='rounded-3 ' /></li>
             <h5 className='text-center py-4 text-white' style={{
               fontSize:"15px",
               }}>© 2025</h5>
