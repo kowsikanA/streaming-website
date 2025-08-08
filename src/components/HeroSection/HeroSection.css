@@ -1,0 +1,57 @@
+.heroSection > *{
+  color: white;
+}
+
+.heroSection .carouselItem{
+  height: 90vh;
+  
+
+}
+
+.carouselItem{
+  background-color: rgb(67, 67, 67);
+}
+
+.carouselItem:nth-child(5){
+  background: linear-gradient(to right, rgb(32, 34, 37), rgb(84, 105, 223));
+}
+
+
+.display-top-ratings{
+  display: flex;
+  justify-content:space-around;
+}
+
+.mov{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  
+}
+
+.display-top-ratings img{
+  width: 105px;
+  padding-right: 5px;
+}
+
+.placement{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.placement h4{
+  display: flex;
+
+  justify-content: center;  
+  font-size: 15px;
+  
+}
+
+.placement h4 strong{
+  background-color: rgb(37, 109, 37);
+  text-align: center;
+  border-radius: 5px;
+  margin: 0px 5px;
+  padding: 2px;
+}
