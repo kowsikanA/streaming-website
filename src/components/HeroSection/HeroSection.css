@@ -34,7 +34,7 @@
 }
 
 .display-top-ratings img{
-  width: 115px;
+  width: 30%;
   padding-right: 5px;
 }
 
@@ -68,6 +68,21 @@
   align-items: center;
   padding-left: 20px;
 }
-.old img{
-  height: 45%;
+
+
+@media screen and (min-width: 1200px){
+  .heroSection .carouselItem{
+    height: 75vh;
+  
+
+  }
+  .old img{
+    height: 30vh;
+    margin-bottom: 20vh;
+  }
+  .carouselItem:nth-child(2) h2{
+    margin-bottom: 20vh;
+  }
 }
+
+

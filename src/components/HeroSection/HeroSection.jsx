@@ -61,9 +61,9 @@ function HeroSection() {
         const data4 = await res4.json();
         const data5 = await resBlackandWhite.json();
 
-        setMovies(data.results.slice(0, 16));
+        setMovies(data.results.slice(0, 25));
 
-        setTvShows(data2.results.slice(0, 16));
+        setTvShows(data2.results.slice(0, 25));
         setMovieRating(data3.results.slice(0, 3));
         setTvRatings(data4.results.slice(0, 3))
         setOldMovies(data5.results.slice(6,11));

@@ -2,11 +2,14 @@ import { useEffect, useState } from 'react';
 import Card from '../Card/Card';
 import Loading from '../Loading';
 import ErrorMessage from '../ErrorMessage';
+import { data } from 'react-router-dom';
 
 function TrendingMovieList() {
     const [movies, setMovies] = useState([]);
+    const [allMovies, setAllMovies] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [clicked, setClicked] = useState(false);
 
     useEffect(() => {
         const fetchMovies = async () => {
@@ -27,8 +30,9 @@ function TrendingMovieList() {
                 const res = await fetch(url, options); // line used from chatgpt
                 if (!res.ok) throw new Error("Unable to fetch users");
                 const data = await res.json();
-
+   
                 setMovies(data.results.slice(0,6));
+                setAllMovies(data.results);
             } catch (err) {
                 setError(err.message);
             } finally {
@@ -42,9 +46,24 @@ function TrendingMovieList() {
     if (loading) return <Loading message="Fetching user data..." />;
     if (error) return <ErrorMessage message={error} />;
 
+    function handleClick() {
+        if(clicked){
+            setMovies(allMovies.slice(0,6));
+        } else{
+            setMovies(allMovies)
+        }
+        setClicked(!clicked)
+    }
     return (
         <div style={{ padding: "1rem" }}>
-            <h3 style={{color: "white", fontSize: "20px"}}>Featured Movies</h3>
+            <div style={{
+                display : 'flex',
+                justifyContent: "space-between",
+                cursor: "pointer"
+            }}>
+                <h3 style={{color: "white", fontSize: "20px"}}>Featured Movies</h3>
+                <a style={{color: "gray", fontSize: "15px"}} onClick={handleClick}>{ clicked ? "Show Less" : "View All"}</a>
+            </div>
             <div style={{
                 display: "grid",
                 gridTemplateColumns: "repeat(6, auto)",
@@ -64,6 +83,7 @@ function TrendingMovieList() {
                     />
                 ))}
             </div>
+
         </div>
     );
 }

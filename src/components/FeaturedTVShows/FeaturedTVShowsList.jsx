@@ -4,12 +4,15 @@ import Loading from '../Loading';
 import ErrorMessage from '../ErrorMessage';
 
 function FeaturedTVShowsList() {
-    const [movies, setMovies] = useState([]);
+    const [media, setMedia] = useState([]);
+    const [allmedia, setAllmedia] = useState([]);
+
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [clicked, setClicked] = useState(false);
 
     useEffect(() => {
-        const fetchMovies = async () => {
+        const fetchmedia = async () => {
             //used in the themoviedb documentation: https://developer.themoviedb.org/reference/intro/getting-started
             const url = 'https://api.themoviedb.org/3/tv/on_the_air?language=en-US&page=1';
             const options = {
@@ -28,7 +31,8 @@ function FeaturedTVShowsList() {
                 if (!res.ok) throw new Error("Unable to fetch users");
                 const data = await res.json();
 
-                setMovies(data.results.slice(0,6));
+                setMedia(data.results.slice(0, 6));
+                setAllmedia(data.results);
             } catch (err) {
                 setError(err.message);
             } finally {
@@ -36,23 +40,38 @@ function FeaturedTVShowsList() {
             }
         };
 
-        fetchMovies();
+        fetchmedia();
     }, []);
 
     if (loading) return <Loading message="Fetching user data..." />;
     if (error) return <ErrorMessage message={error} />;
-
+    
+    function handleClick() {
+        if (clicked) {
+            setMedia(allmedia.slice(0, 6));
+        } else {
+            setMedia(allmedia)
+        }
+        setClicked(!clicked)
+    }
     return (
         <div style={{ padding: "1rem" }}>
-            <h3 style={{color: "white", fontSize: "20px"}}>Featured TV Shows</h3>
             <div style={{
-               display: "grid",
+                display: 'flex',
+                justifyContent: "space-between",
+                cursor: "pointer"
+            }}>
+                <h3 style={{ color: "white", fontSize: "20px" }}>Featured TV Shows</h3>
+                <a style={{ color: "gray", fontSize: "15px" }} onClick={handleClick}>{clicked ? "Show Less" : "View All"}</a>
+            </div>
+            <div style={{
+                display: "grid",
                 gridTemplateColumns: "repeat(6, auto)",
                 marginTop: "1rem",
                 paddingLeft: "10rem",
                 paddingRight: "10rem"
             }}>
-                {movies.map(movie => (
+                {media.map(movie => (
                     <Card
                         movieId={movie.id}
                         image={movie.poster_path}
