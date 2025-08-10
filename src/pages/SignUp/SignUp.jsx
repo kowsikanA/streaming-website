@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom'
 function SignIn() {
   return (
     <div style={{
+      marginBottom: "10px",
       height: "100vh",
       display: "flex",
       justifyContent: "center",

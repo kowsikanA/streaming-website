@@ -79,3 +79,20 @@ button:active{
 
 }
 
+@media screen and (min-width: 1080px) {
+  .sign-up-icons{
+  display: flex;
+  justify-content:space-between;
+  margin: 0 auto;
+  gap: 20px;
+} 
+
+.sign-up-icons .social-icon{
+  width: 100px;
+  text-align: center;
+  background-color: transparent;
+  color: rgb(95, 141, 241);
+
+}
+
+}

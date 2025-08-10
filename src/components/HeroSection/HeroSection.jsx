@@ -1,6 +1,6 @@
 import './HeroSection.css'
 import Carousel from 'react-bootstrap/Carousel'
-
+import Button from 'react-bootstrap/Button'
 
 import React, { useEffect, useState } from 'react';
 
@@ -138,17 +138,22 @@ function HeroSection() {
             <h3>Third Slide</h3>
             <p>sample slide1</p>
           </Carousel.Caption> */}
-          <div className="row row-cols-1 row-cols-md-3 mb-3  text-center my-5" style={{height: "20vh"}}>
+          <div className="row row-cols-1 row-cols-md-3 mb-3 mt-5 pt-5 text-center my-5" >
             <div className="col">
               <div className="card mb-4 rounded-3 shadow-sm w-75 mx-auto">
                 <div className="card-header py-3">
-                  <h4 className="my-0 fw-normal fs-5">$7/hour</h4>
+                  <h4 className="my-0 fw-normal fs-5">$12/monthly</h4>
                 </div>
                   <div className="card-body">
-                      <h6 className="">stream 50000 movies/tvs monthly</h6>
-                      <h6 className="">Email Support</h6>
+                      <h6 className='py-2'>stream 45,000 movies/tvs monthly</h6>
+                      <h6 className='py-2'>4K/Ultra HD/HD Quality</h6>
+                      <h6 className='py-2'>Supports All Devices</h6>
+                      <h6 className='py-2'>Email Support</h6>
 
                   </div>
+                  <Button variant="primary" size="md" >
+                    Buy Now
+                  </Button>
                 </div>
                 
               </div>
@@ -156,13 +161,38 @@ function HeroSection() {
               <div className="col">
               <div className="card mb-4 rounded-3 shadow-sm w-75 mx-auto">
                 <div className="card-header py-3">
-                  <h4 className="my-0 fw-normal fs-5">$15/hour</h4>
+                  <h4 className="my-0 fw-normal fs-5">$24/monthly</h4>
                 </div>
                   <div className="card-body">
-                      <h6>stream 1000000 movies/tvs monthly</h6>
-                      <h6>Email Support</h6>
+                      <h6 className='py-2'>stream 1,000,000 movies/tvs monthly</h6>
+                      <h6 className='py-2'>4K/Ultra HD/HD Quality</h6>
+                      <h6 className='py-2'>Supports All Devices</h6>
+                      <h6 className='py-2'>Email Support</h6>
 
                   </div>
+                  <Button variant="primary" size="md" >
+                    Buy Now
+                  </Button>
+                </div>
+                
+              </div>
+
+              
+              <div className="col">
+              <div className="card mb-4 rounded-3 shadow-sm w-75 mx-auto">
+                <div className="card-header py-3">
+                  <h4 className="my-0 fw-normal fs-5">$65/monthly</h4>
+                </div>
+                  <div className="card-body">
+                      <h6 className='py-2'>stream 500,000,000 movies/tvs monthly</h6>
+                      <h6 className='py-2'>4K/Ultra HD/HD Quality</h6>
+                      <h6 className='py-2'>Supports All Devices</h6>
+                      <h6 className='py-2'>Email Support</h6>
+
+                  </div>
+                  <Button variant="primary" size="md" >
+                    Buy Now
+                  </Button>
                 </div>
                 
               </div>

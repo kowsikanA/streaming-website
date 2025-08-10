@@ -14,6 +14,7 @@ const Navbar = () => {
         </ul>
       </nav>
       <NavLink href="" className='sign-up' to='/signin'>Sign In</NavLink>
+      <h1 style={{color: "white", textAlign: "center"}}>🔍︎</h1>
     </div>
   )
 }
