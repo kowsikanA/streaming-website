@@ -14,3 +14,6 @@
   border-color: rgb(192, 189, 189);
   border-width: 5px;
 }
+.poster:active{
+  opacity: 0.2;
+}

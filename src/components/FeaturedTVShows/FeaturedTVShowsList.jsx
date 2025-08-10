@@ -54,8 +54,13 @@ function FeaturedTVShowsList() {
             }}>
                 {movies.map(movie => (
                     <Card
-                        key={movie.id}
+                        movieId={movie.id}
                         image={movie.poster_path}
+                        secondPoster={movie.backdrop_path}
+                        synopsis={movie.overview}
+                        genre={movie.genre_ids}
+                        title={movie.name}
+                        rating={movie.vote_average}
                     />
                 ))}
             </div>

@@ -1,0 +1,26 @@
+.button-contents{
+  display: flex;
+  width: 25%;
+  justify-content:space-evenly;
+  align-items: center;
+}
+
+.checkboxbutton{
+  color: white;
+  
+}
+
+.checkboxbutton input{
+  /* margin-top: 20px; */
+  height: 17px;
+  width: 25px;
+  margin-right: 5px;
+  
+
+}
+
+.checkboxbutton label{
+  font-size: 15px;
+
+}
+

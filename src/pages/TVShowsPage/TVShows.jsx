@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import './Movies.css'
+import './TVShows.css'
 import { DropdownButton, Dropdown, ButtonGroup, Tabs, Tab } from 'react-bootstrap';
 // https://react-bootstrap.netlify.app/docs/components/accordion/
 
@@ -7,15 +7,14 @@ import Card from '../../components/Card/Card';
 import Loading from '../../components/Loading';
 import ErrorMessage from '../../components/ErrorMessage';
 
-function Movies() {
+function TVShows() {
   const [movies, setMovies] = useState([]);
-  const [releasedMovies, setreleasedMovies] = useState([]);
-  const [releaseDate, setReleaseDate] = useState([]);
-
+  const [releasedMovies, setRecentTVShows] = useState([]);
+  const [releasedDate, setreleasedDate] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  async function getResults(url, options, totalPages = 2) {
+  async function getResults( url, options, totalPages =2) {
     let allResults = [];
 
     for (let page = 1; page <= totalPages; page++) {
@@ -31,9 +30,9 @@ function Movies() {
   useEffect(() => {
     const fetchMovies = async () => {
       //used in the themoviedb documentation: https://developer.themoviedb.org/reference/intro/getting-started
-      const url = 'https://api.themoviedb.org/3/discover/movie?include_adult=false&language=en-US&sort_by=vote_count.desc';
-      const recentlyAddedUrl = 'https://api.themoviedb.org/3/movie/now_playing?language=en-US';
-
+      const url = 'https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&sort_by=vote_count.desc';
+      const recentlyAddedUrl = 'https://api.themoviedb.org/3/tv/airing_today?language=en-US';
+      
       const options = {
         method: 'GET',
         headers: {
@@ -53,11 +52,11 @@ function Movies() {
         const data = await res.json();
 
 
-
+        
         // const data2 = await res2.json();
-        setMovies(await getResults(url, options));
-        setreleasedMovies(await getResults(recentlyAddedUrl, options));
-        setReleaseDate(await getResults('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&primary_release_date.lte=2025-12-31&sort_by=primary_release_date.desc', options))
+        setMovies(await getResults( url, options));
+        setRecentTVShows(await getResults(recentlyAddedUrl, options))
+        setreleasedDate(await getResults('https://api.themoviedb.org/3/discover/tv?first_air_date.lte=2025-12-30&include_adult=false&include_null_first_air_dates=false&language=en-US&sort_by=first_air_date.desc', options))
       } catch (err) {
         setError(err.message);
       } finally {
@@ -67,37 +66,36 @@ function Movies() {
 
     fetchMovies();
   }, []);
-
   function handleSort(eventKey){
 
     switch (eventKey){
 
       case "1":
-        setMovies([...movies].sort((a,b) => a.title.localeCompare(b.title)));
-        setreleasedMovies([...releasedMovies].sort((a,b) => a.title.localeCompare(b.title)));
-        setReleaseDate([...releaseDate].sort((a,b) => a.title.localeCompare(b.title)));
+        setMovies([...movies].sort((a,b) => a.name.localeCompare(b.name)));
+        setRecentTVShows([...releasedMovies].sort((a,b) => a.name.localeCompare(b.name)));
+        setreleasedDate([...releaseDate].sort((a,b) => a.name.localeCompare(b.name)));
         break;
       case "2":
-        setMovies([...movies].sort((a,b) => b.title.localeCompare(a.title)));
-        setreleasedMovies([...releasedMovies].sort((a,b) => b.title.localeCompare(a.title)));
-        setReleaseDate([...releaseDate].sort((a,b) => b.title.localeCompare(a.title)));
+        setMovies([...movies].sort((a,b) => b.name.localeCompare(a.name)));
+        setRecentTVShows([...releasedMovies].sort((a,b) => b.name.localeCompare(a.name)));
+        setreleasedDate([...releaseDate].sort((a,b) => b.name.localeCompare(a.name)));
         break;
 
       case "3":
         setMovies([...movies].sort((a,b) => a.popularity - b.popularity));
-        setreleasedMovies([...releasedMovies].sort((a,b) => a.popularity - b.popularity));
-        setReleaseDate([...releaseDate].sort((a,b) =>  a.popularity - b.popularity));
+        setRecentTVShows([...releasedMovies].sort((a,b) => a.popularity - b.popularity));
+        setreleasedDate([...releaseDate].sort((a,b) =>  a.popularity - b.popularity));
         break;
 
       case "4":
         setMovies([...movies].sort((a,b) => b.popularity - a.popularity));
-        setreleasedMovies([...releasedMovies].sort((a,b) => b.popularity - a.popularity));
-        setReleaseDate([...releaseDate].sort((a,b) =>  b.popularity - a.popularity));
+        setRecentTVShows([...releasedMovies].sort((a,b) => b.popularity - a.popularity));
+        setreleasedDate([...releaseDate].sort((a,b) =>  b.popularity - a.popularity));
         break
       case "5":
         setMovies([...movies].sort((a,b) => a.vote_average - b.vote_average));
-        setreleasedMovies([...releasedMovies].sort((a,b) => a.vote_average - b.vote_average));
-        setReleaseDate([...releaseDate].sort((a,b) =>  a.vote_average - b.vote_average));
+        setRecentTVShows([...releasedMovies].sort((a,b) => a.vote_average - b.vote_average));
+        setreleasedDate([...releaseDate].sort((a,b) =>  a.vote_average - b.vote_average));
       
       default:
 
@@ -106,9 +104,6 @@ function Movies() {
 
 
   }
-
- 
-
   if (loading) return <Loading message="Fetching user data..." />;
   if (error) return <ErrorMessage message={error} />;
 
@@ -130,13 +125,14 @@ function Movies() {
 
           </DropdownButton>
         </ButtonGroup> */}
+
         <Dropdown onSelect={handleSort}>
           <Dropdown.Toggle variant='success' id='dropdown-basic' className='px-3 py-2 '>
             Filters
           </Dropdown.Toggle>
           <Dropdown.Menu>
-            <Dropdown.Item eventKey="1">Name.asc</Dropdown.Item>
-            <Dropdown.Item eventKey="2">Name.desc</Dropdown.Item>
+            <Dropdown.Item eventKey="1">firstName.asc</Dropdown.Item>
+            <Dropdown.Item eventKey="2">firstName.desc</Dropdown.Item>
             <Dropdown.Item eventKey="3">popularity.asc</Dropdown.Item>
             <Dropdown.Item eventKey="4">popularity.desc</Dropdown.Item>
             <Dropdown.Item eventKey="5">rating.asc</Dropdown.Item>
@@ -167,40 +163,38 @@ function Movies() {
           }}>
             {movies.map(movie => (
               <Card
-                  movieId={movie.id}
+                 movieId={movie.id}
                         image={movie.poster_path}
                         secondPoster={movie.backdrop_path}
                         synopsis={movie.overview}
                         genre={movie.genre_ids}
-                        title={movie.title}
+                        title={movie.name}
                         rating={movie.vote_average}
               />
             ))}
           </div>
         </Tab>
-
         <Tab className='tab' eventKey='profile' title='Release Date'>
-          <div style={{
+           <div style={{
             display: "grid",
             gridTemplateColumns: "repeat(7, auto)",
             marginTop: "1rem",
             paddingLeft: "3rem",
             paddingRight: "3rem"
           }}>
-            {releaseDate.map(movie => (
-             movie.poster_path ? (<Card
-                  movieId={movie.id}
-                        image={movie.poster_path}
-                        secondPoster={movie.backdrop_path}
-                        synopsis={movie.overview}
-                        genre={movie.genre_ids}
-                        title={movie.title}
-                        rating={movie.vote_average}
-              />): null
+            {releasedDate.map(tvDate => (
+            tvDate.poster_path ? (<Card
+                 movieId={tvDate.id}
+                        image={tvDate.poster_path}
+                        secondPoster={tvDate.backdrop_path}
+                        synopsis={tvDate.overview}
+                        genre={tvDate.genre_ids}
+                        title={tvDate.name}
+                        rating={tvDate.vote_average}
+              />) : null
             ))}
           </div>
         </Tab>
-
         <Tab className='tab rounded-end-5' eventKey='longer-tab' title='Recently Added'>
           <div style={{
             display: "grid",
@@ -211,17 +205,18 @@ function Movies() {
           }}>
             {releasedMovies.map(movie => (
               <Card
-                movieId={movie.id}
+                 movieId={movie.id}
                         image={movie.poster_path}
                         secondPoster={movie.backdrop_path}
                         synopsis={movie.overview}
                         genre={movie.genre_ids}
-                        title={movie.title}
+                        title={movie.name}
                         rating={movie.vote_average}
               />
             ))}
           </div>
         </Tab>
+        {/* <Tab eventKey='contact' title='Contact' disabled>Tab content for home</Tab> */}
 
       </Tabs>
 
@@ -229,4 +224,4 @@ function Movies() {
   )
 }
 
-export default Movies
+export default TVShows;

@@ -53,9 +53,14 @@ function TrendingMovieList() {
                 paddingRight: "10rem"
             }}>
                 {movies.map(movie => (
-                    <Card
-                        key={movie.id}
+                      <Card
+                        movieId={movie.id}
                         image={movie.poster_path}
+                        secondPoster={movie.backdrop_path}
+                        synopsis={movie.overview}
+                        genre={movie.genre_ids}
+                        title={movie.title}
+                        rating={movie.vote_average}
                     />
                 ))}
             </div>
