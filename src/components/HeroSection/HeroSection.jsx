@@ -131,13 +131,43 @@ function HeroSection() {
 
 
         <Carousel.Item className='carouselItem'>
-          <img text="Third Slide" className='d-block w-100 '
+          {/* <img text="Third Slide" className='d-block w-100 '
             src="https://media.istockphoto.com/id/517188688/photo/mountain-landscape.jpg?s=1024x1024&w=0&k=20&c=z8_rWaI8x4zApNEEG9DnWlGXyDIXe-OmsAyQ5fGPVV8="
           />
           <Carousel.Caption>
             <h3>Third Slide</h3>
             <p>sample slide1</p>
-          </Carousel.Caption>
+          </Carousel.Caption> */}
+          <div className="row row-cols-1 row-cols-md-3 mb-3  text-center my-5" style={{height: "20vh"}}>
+            <div className="col">
+              <div className="card mb-4 rounded-3 shadow-sm w-75 mx-auto">
+                <div className="card-header py-3">
+                  <h4 className="my-0 fw-normal fs-5">$7/hour</h4>
+                </div>
+                  <div className="card-body">
+                      <h6 className="">stream 50000 movies/tvs monthly</h6>
+                      <h6 className="">Email Support</h6>
+
+                  </div>
+                </div>
+                
+              </div>
+
+              <div className="col">
+              <div className="card mb-4 rounded-3 shadow-sm w-75 mx-auto">
+                <div className="card-header py-3">
+                  <h4 className="my-0 fw-normal fs-5">$15/hour</h4>
+                </div>
+                  <div className="card-body">
+                      <h6>stream 1000000 movies/tvs monthly</h6>
+                      <h6>Email Support</h6>
+
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+
 
         </Carousel.Item>
 
@@ -157,7 +187,7 @@ function HeroSection() {
                 {movieRatings.map(movieRate => (
                   <div className='placement'>
 
-                  <img key={movieRate.id} src={'https://image.tmdb.org/t/p/w154' + movieRate.poster_path}  />
+                  <img key={movieRate.id} src={'https://image.tmdb.org/t/p/w92' + movieRate.poster_path}  />
                   <h4>Rating: <strong>{movieRate.vote_average}</strong> / 10</h4>
                   </div>
                 ))}
@@ -175,7 +205,7 @@ function HeroSection() {
                   .map(tvRating => (
                   <div className='placement'>
                     
-                    <img key={tvRating.id} src={'https://image.tmdb.org/t/p/w154' + tvRating.poster_path}  />
+                    <img key={tvRating.id} src={'https://image.tmdb.org/t/p/w92' + tvRating.poster_path}  />
                     <h4>Rating:  <strong>{tvRating.vote_average}</strong> / 10</h4>
 
                   </div>
