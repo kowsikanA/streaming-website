@@ -7,8 +7,8 @@ import Footer from './components/Footer/Footer';
 import { Route, Routes } from 'react-router-dom';
 import Layout from './Layout';
 import Home from './pages/Home';
-import Contact from './pages/Contact';
-import About from './pages/About/About'
+import Contact from './pages/TVShowsPage/Contact';
+import Movies from './pages/MoviesPage/Movies'
 import SignIn from './pages/SignIn/SignIn';
 import SignUp from './pages/SignUp/SignUp';
 function App() {
@@ -32,7 +32,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Layout/>}>
         <Route index element={<Home/>}/>
-        <Route path="about" element={<About/>}/>
+        <Route path="movie" element={<Movies/>}/>
         <Route path="contact" element={<Contact/>}/>
         <Route path='signin' element={<SignIn />} />
         <Route path='signup' element={<SignUp />} />

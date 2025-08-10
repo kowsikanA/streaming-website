@@ -12,7 +12,7 @@ function Footer() {
             <li className='py-2'><img src="/images/microsoft_badge.svg" alt="" width={180} height={65} className='rounded-3 ' /></li>
             <h5 className='text-center py-4 text-white' style={{
               fontSize:"15px",
-              }}>© 2025</h5>
+              }}>Streamora © 2025</h5>
           </ul>
         </div>
 

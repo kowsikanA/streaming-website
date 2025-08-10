@@ -10,6 +10,9 @@ import ErrorMessage from '../ErrorMessage';
 
 function HeroSection() {
   const [movies, setMovies] = useState([]);
+  const [oldMovies, setOldMovies] = useState([]);
+
+
   const [tvShows, setTvShows] = useState([]);
   const [movieRatings, setMovieRating] = useState([]);
   const [tvRatings, setTvRatings] = useState([]);
@@ -23,6 +26,8 @@ function HeroSection() {
       const url = 'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1';
       const tvShowsUrl = 'https://api.themoviedb.org/3/tv/on_the_air?language=en-US&page=1';
       const moviesRatedUrl = 'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1'
+      const tvRatedURL = 'https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=1';
+      const oldMoviesUrl = 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&primary_release_date.gte=1920-01-01&primary_release_date.lte=1940-01-01&sort_by=vote_average.desc';
 
       const options = {
         method: 'GET',
@@ -39,26 +44,29 @@ function HeroSection() {
         const res = await fetch(url, options); // line used from chatgpt
         const res2 = await fetch(tvShowsUrl, options);
         const res3 = await fetch(moviesRatedUrl, options);
-        const res4 = await fetch('https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=1', options)
-        
+        const res4 = await fetch(tvRatedURL, options)
+        const resBlackandWhite = await fetch(oldMoviesUrl, options)
 
 
         if (!res.ok) throw new Error("Unable to fetch users");
         if (!res2.ok) throw new Error("Unable to fetch users");
         if (!res3.ok) throw new Error("Unable to fetch users");
         if (!res4.ok) throw new Error("Unable to fetch users");
+        if (!resBlackandWhite.ok) throw new Error("Unable to fetch users");
 
 
         const data = await res.json();
         const data2 = await res2.json();
         const data3 = await res3.json();
         const data4 = await res4.json();
+        const data5 = await resBlackandWhite.json();
 
         setMovies(data.results.slice(0, 16));
 
         setTvShows(data2.results.slice(0, 16));
         setMovieRating(data3.results.slice(0, 3));
         setTvRatings(data4.results.slice(0, 3))
+        setOldMovies(data5.results.slice(6,11));
       } catch (err) {
         setError(err.message);
       } finally {
@@ -106,16 +114,21 @@ function HeroSection() {
           </div>
         </Carousel.Item>
 
-        <Carousel.Item className='carouselItem'>
-          <img text="Third Slide" className='d-block w-100 '
-            src="https://media.istockphoto.com/id/517188688/photo/mountain-landscape.jpg?s=1024x1024&w=0&k=20&c=z8_rWaI8x4zApNEEG9DnWlGXyDIXe-OmsAyQ5fGPVV8="
-          />
-          <Carousel.Caption>
-            <h3>Third Slide</h3>
-            <p>sample slide1</p>
+        <Carousel.Item className='carouselItem'  >
+          <Carousel.Caption style={{ width: "100%", left: "0px", top: "50%", marginTop: "-20px" }}>
+            <h2 style={{ textAlign: "end", padding: "40px"}}>Black and White movies</h2>
           </Carousel.Caption>
 
+          <div style={{ marginTop: "60px" }}>
+            <div className="old">
+            {oldMovies.map(oldMovie => (
+              <img key={oldMovie.id} src={'https://image.tmdb.org/t/p/w185' + oldMovie.poster_path} />
+
+            ))}
+          </div>
+          </div>
         </Carousel.Item>
+
 
         <Carousel.Item className='carouselItem'>
           <img text="Third Slide" className='d-block w-100 '
@@ -145,7 +158,7 @@ function HeroSection() {
                   <div className='placement'>
 
                   <img key={movieRate.id} src={'https://image.tmdb.org/t/p/w154' + movieRate.poster_path}  />
-                  <h4>Rating: <strong>{movieRate.vote_average}</strong> /10</h4>
+                  <h4>Rating: <strong>{movieRate.vote_average}</strong> / 10</h4>
                   </div>
                 ))}
               </div>
@@ -157,11 +170,13 @@ function HeroSection() {
               }}>TV Ratings</h3>
 
               <div className='mov' style={{ marginTop: "30px" }}>
-                {tvRatings.map(tvRating => (
+                {
+                tvRatings
+                  .map(tvRating => (
                   <div className='placement'>
-
+                    
                     <img key={tvRating.id} src={'https://image.tmdb.org/t/p/w154' + tvRating.poster_path}  />
-                    <h4>Rating:  <strong>{tvRating.vote_average}</strong> /10</h4>
+                    <h4>Rating:  <strong>{tvRating.vote_average}</strong> / 10</h4>
 
                   </div>
                 ))}

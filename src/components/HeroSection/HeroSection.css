@@ -16,6 +16,10 @@
   background: linear-gradient(to right, rgb(32, 34, 37), rgb(84, 105, 223));
 }
 
+.carouselItem:nth-child(3){
+  background: linear-gradient(to left, rgb(0, 0, 0), rgb(138, 138, 138));
+}
+
 
 .display-top-ratings{
   display: flex;
@@ -30,7 +34,7 @@
 }
 
 .display-top-ratings img{
-  width: 105px;
+  width: 115px;
   padding-right: 5px;
 }
 
@@ -54,4 +58,16 @@
   border-radius: 5px;
   margin: 0px 5px;
   padding: 2px;
+}
+
+.old{
+  height: 75vh;
+  gap: 10px;
+  display: flex;
+  justify-content:flex-start;
+  align-items: center;
+  padding-left: 20px;
+}
+.old img{
+  height: 45%;
 }
