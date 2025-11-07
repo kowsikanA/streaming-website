@@ -45,8 +45,7 @@ function TVShows() {
         setLoading(true);
 
 
-        const res = await fetch(url, options); // line used from chatgpt
-        // const res2 = await fetch(url2, options); 
+        const res = await fetch(url, options); 
 
         if (!res.ok) throw new Error("Unable to fetch users");
         const data = await res.json();
@@ -216,8 +215,6 @@ function TVShows() {
             ))}
           </div>
         </Tab>
-        {/* <Tab eventKey='contact' title='Contact' disabled>Tab content for home</Tab> */}
-
       </Tabs>
 
     </div>
