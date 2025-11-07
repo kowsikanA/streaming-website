@@ -27,7 +27,7 @@ function FeaturedTVShowsList() {
                 setLoading(true);
 
 
-                const res = await fetch(url, options); // line used from chatgpt
+                const res = await fetch(url, options); 
                 if (!res.ok) throw new Error("Unable to fetch users");
                 const data = await res.json();
 
