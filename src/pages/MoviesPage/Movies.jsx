@@ -46,15 +46,11 @@ function Movies() {
         setLoading(true);
 
 
-        const res = await fetch(url, options); // line used from chatgpt
-        // const res2 = await fetch(url2, options); 
+        const res = await fetch(url, options); 
 
         if (!res.ok) throw new Error("Unable to fetch users");
         const data = await res.json();
 
-
-
-        // const data2 = await res2.json();
         setMovies(await getResults(url, options));
         setreleasedMovies(await getResults(recentlyAddedUrl, options));
         setReleaseDate(await getResults('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&primary_release_date.lte=2025-12-31&sort_by=primary_release_date.desc', options))
@@ -102,12 +98,7 @@ function Movies() {
       default:
 
     }
-
-
-
   }
-
- 
 
   if (loading) return <Loading message="Fetching user data..." />;
   if (error) return <ErrorMessage message={error} />;
