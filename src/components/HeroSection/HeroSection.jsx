@@ -41,7 +41,7 @@ function HeroSection() {
         setLoading(true);
 
 
-        const res = await fetch(url, options); // line used from chatgpt
+        const res = await fetch(url, options); 
         const res2 = await fetch(tvShowsUrl, options);
         const res3 = await fetch(moviesRatedUrl, options);
         const res4 = await fetch(tvRatedURL, options)
