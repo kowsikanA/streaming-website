@@ -3,7 +3,7 @@ import Loading from '../../components/Loading'
 import ErrorMessage from '../../components/ErrorMessage'
 import { useEffect, useState } from 'react';
 
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import './Details.css'
 
@@ -15,6 +15,7 @@ function Details() {
   const [error, setError] = useState(null);
 
   const location = useLocation();
+  const navigate = useNavigate();
   const { movieId,
     image,
     secondPoster,
@@ -43,7 +44,7 @@ function Details() {
         setLoading(true);
 
 
-        const res = await fetch(url, options); 
+        const res = await fetch(url, options);
         if (!res.ok) throw new Error("Unable to fetch users");
         const data = await res.json();
 
@@ -111,15 +112,28 @@ function Details() {
         </div>
         <div className="ratings-popular">
           <p>{Math.floor(rating)}/10</p>
-          <p>{ }</p>
         </div>
         <div className='story'>
           {synopsis}
         </div>
 
         <div className="costButtons">
-          <button>Rent $3.99</button>
-          <button>Buy $14.99</button>
+          <button onClick={() => navigate("/success", {
+            state: {
+              movieId,
+              secondPoster,
+              title, 
+              image
+            }
+          })}>Rent $3.99</button>
+          <button onClick={() => navigate("/success", {
+            state: {
+              movieId,
+              secondPoster,
+              title, 
+              image
+            }
+          })}>Buy $14.99</button>
         </div>
       </div>
       <img src={'https://image.tmdb.org/t/p/w300' + secondPoster} alt="" />

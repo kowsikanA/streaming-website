@@ -7,6 +7,8 @@ import Movies from './pages/MoviesPage/Movies'
 import SignIn from './pages/SignIn/SignIn';
 import SignUp from './pages/SignUp/SignUp';
 import Details from './pages/DetailsPage/Details';
+import Success from './pages/SuccessPage/Success';
+
 function App() {
   return (
     <Routes>
@@ -17,6 +19,7 @@ function App() {
         <Route path='signin' element={<SignIn />} />
         <Route path='signup' element={<SignUp />} />
         <Route path='details' element={<Details />} />
+        <Route path='success' element={<Success/>}/>
       </Route>
     </Routes>
   );
